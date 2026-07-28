@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Ander Amezcua — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+<style>
+  :root{
+    --cream:#F2DBBD;
+    --paper:#FDF9F4;
+    --ink:#17140F;
+    --ink-soft:#6B6459;
+    --red:#90040F;
+    --shadow:0 18px 40px rgba(23,20,15,0.22);
+    --radius:14px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  html,body{min-height:100%}
+
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Montserrat',Arial,sans-serif;
+    display:flex;
+    flex-direction:column;
+    min-height:100dvh;
+    padding:16px;
+    overflow-x:hidden;
+  }
+
+  header{
+    width:min(100%,1100px);
+    margin:0 auto 16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+
+  .brand{display:flex;align-items:center;gap:10px;min-width:0}
+  .logo{width:22px;height:22px;flex:0 0 auto}
+  .logo path{fill:none;stroke:var(--red);stroke-width:70.85px}
+  .brand span{
+    font-weight:800;
+    font-size:clamp(12px,1.6vw,14px);
+    letter-spacing:.02em;
+    text-transform:uppercase;
+    line-height:1.1;
+  }
+
+  .menu{display:flex;gap:8px;flex-wrap:wrap}
+  .menu a{
+    min-height:44px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    text-decoration:none;
+    border:1px solid var(--ink-soft);
+    padding:10px 14px;
+    background:transparent;
+    transition:.18s ease;
+  }
+  .menu a:hover{border-color:var(--red);color:var(--red)}
+  .menu a.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .menu a.primary:hover{background:var(--red);border-color:var(--red);color:var(--paper)}
+
+  .viewer-shell{
+    width:min(100%,1200px);
+    margin:0 auto;
+    flex:1;
+    display:grid;
+    grid-template-rows:auto 1fr auto;
+    gap:12px;
+    min-height:0;
+  }
+
+  .stage{
+    min-height:0;
+    display:grid;
+    grid-template-columns:auto minmax(0,1fr) auto;
+    align-items:center;
+    gap:12px;
+    width:100%;
+  }
+
+  .book-wrap{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-width:0;
+    overflow:hidden;
+    padding:8px 0;
+  }
+
+  #book{
+    width:min(82vw,760px);
+    aspect-ratio:1 / 1;
+    margin:0 auto;
+    filter:drop-shadow(var(--shadow));
+  }
+
+  .stf__parent{margin:0 auto !important;max-width:100%}
+
+  .nav-btn{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    min-height:44px;
+    border:1px solid var(--ink);
+    background:var(--paper);
+    color:var(--ink);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    line-height:1;
+    cursor:pointer;
+    transition:.18s ease;
+  }
+  .nav-btn:hover{background:var(--red);color:var(--paper);border-color:var(--red)}
+  .nav-btn:disabled{opacity:.35;cursor:default}
+  .nav-btn:disabled:hover{background:var(--paper);color:var(--ink);border-color:var(--ink)}
+
+  .footer-bar{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    color:var(--ink-soft);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .footer-bar span{color:var(--red)}
+
+  .hint{
+    text-align:center;
+    font-size:11px;
+    color:var(--ink-soft);
+    letter-spacing:.06em;
+    text-transform:uppercase;
+  }
+
+  @media (max-width: 900px){
+    #book{width:min(84vw,640px)}
+  }
+
+  @media (max-width: 640px){
+    body{padding:12px 10px 14px}
+
+    header{margin-bottom:10px}
+
+    .brand span{font-size:12px}
+
+    .stage{
+      grid-template-columns:36px minmax(0,1fr) 36px;
+      gap:6px;
+    }
+
+    #book{
+      width:min(100%,88vw);
+    }
+
+    .nav-btn{
+      width:36px;
+      height:36px;
+      min-width:36px;
+      min-height:36px;
+      font-size:15px;
+    }
+
+    .menu{width:100%}
+    .menu a{flex:1 1 140px;padding:10px 12px}
+  }
+
+  @media (max-width: 420px){
+    .stage{
+      grid-template-columns:32px minmax(0,1fr) 32px;
+    }
+
+    #book{width:100%}
+
+    .nav-btn{
+      width:32px;
+      height:32px;
+      min-width:32px;
+      min-height:32px;
+      font-size:14px;
+    }
+
+    .footer-bar{font-size:11px;letter-spacing:.05em}
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 3508 3508" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="matrix(1.76433,0,0,1.76433,-1340.59,-1340.59)">
+          <path d="M2681.1,2681.1L1753.94,826.772L826.772,2681.1L2681.1,1753.94"/>
+        </g>
+      </svg>
+      <span>Ander Amezcua</span>
+    </div>
+
+    <nav class="menu" aria-label="Navegación principal">
+      <a href="javascript:history.back()">Atrás</a>
+      <a href="index.html" class="primary">Inicio</a>
+    </nav>
+  </header>
+
+  <main class="viewer-shell">
+    <section class="stage" aria-label="Visor del portfolio">
+      <button class="nav-btn" id="prev" aria-label="Página anterior">‹</button>
+
+      <div class="book-wrap">
+        <div id="book"></div>
+      </div>
+
+      <button class="nav-btn" id="next" aria-label="Página siguiente">›</button>
+    </section>
+
+    <div class="footer-bar">Página <span id="current">1</span> / <span id="total">21</span></div>
+    <p class="hint">Desliza, toca o usa las flechas del teclado</p>
+  </main>
+
+  <script>
+    const pages = [];
+    for (let i = 1; i <= 21; i++) {
+      const n = String(i).padStart(2, '0');
+      pages.push(`pages/page-${n}.jpg`);
+    }
+
+    const bookElement = document.getElementById('book');
+    const currentEl = document.getElementById('current');
+    const totalEl = document.getElementById('total');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+
+    const pageFlip = new St.PageFlip(bookElement, {
+      width: 700,
+      height: 700,
+      size: 'stretch',
+      minWidth: 260,
+      maxWidth: 700,
+      minHeight: 260,
+      maxHeight: 700,
+      showCover: true,
+      usePortrait: true,
+      autoSize: true,
+      maxShadowOpacity: 0.22,
+      mobileScrollSupport: true,
+      swipeDistance: 30,
+      clickEventForward: true
+    });
+
+    pageFlip.loadFromImages(pages);
+
+    function updateButtons() {
+      const idx = pageFlip.getCurrentPageIndex();
+      const count = pageFlip.getPageCount();
+      currentEl.textContent = idx + 1;
+      totalEl.textContent = count;
+      prevBtn.disabled = idx === 0;
+      nextBtn.disabled = idx === count - 1;
+    }
+
+    pageFlip.on('init', updateButtons);
+    pageFlip.on('flip', updateButtons);
+    pageFlip.on('update', updateButtons);
+
+    prevBtn.addEventListener('click', () => pageFlip.flipPrev());
+    nextBtn.addEventListener('click', () => pageFlip.flipNext());
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') pageFlip.flipNext();
+      if (e.key === 'ArrowLeft') pageFlip.flipPrev();
+    });
+
+    window.addEventListener('resize', () => {
+      updateButtons();
+    });
+
+    updateButtons();
+  </script>
+</body>
+</html>
