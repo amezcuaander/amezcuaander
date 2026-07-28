@@ -156,18 +156,19 @@
     }
 
     const pageFlip = new St.PageFlip(document.getElementById('book'), {
-      width: 700,
-      height: 700,
-      size: "stretch",
-      minWidth: 600,
-      maxWidth: 950,
-      minHeight: 280,
-      maxHeight: 950,
-      showCover: true,
-      maxShadowOpacity: 0.4,
-      mobileScrollSupport: false,
-      usePortrait: true
-    });
+  width: 700,
+  height: 700,
+  size: "stretch",
+  minWidth: 260,
+  maxWidth: 700,
+  minHeight: 260,
+  maxHeight: 700,
+  showCover: true,
+  usePortrait: true,
+  autoSize: true,
+  maxShadowOpacity: 0.25,
+  mobileScrollSupport: true
+});
 
     pageFlip.loadFromImages(pages);
 
