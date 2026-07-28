@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ander Amezcua — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+<style>
+  :root{
+    --cream: #F2DBBD;
+    --paper: #FDF9F4;
+    --ink: #17140F;
+    --ink-soft: #6B6459;
+    --red: #90040F;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html, body{ height: 100%; }
+
+  body{
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Montserrat', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px 16px 28px;
+  }
+
+  header{
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 4px 18px;
+  }
+
+  .brand{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo{ width: 22px; height: 22px; }
+  .logo path{ fill:none; stroke: var(--red); stroke-width: 70.85px; }
+
+  .brand span{
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  header a{
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border: 1px solid var(--ink-soft);
+    padding: 7px 14px;
+    transition: all 0.15s ease;
+  }
+  header a:hover{ border-color: var(--red); color: var(--red); }
+
+  .stage{
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    max-width: 1000px;
+  }
+
+  #book{
+    box-shadow: 0 18px 40px rgba(23,20,15,0.25);
+  }
+
+  .stf__parent{ margin: 0 auto; }
+
+  .nav-btn{
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .nav-btn:hover{ background: var(--red); color: var(--paper); border-color: var(--red); }
+  .nav-btn:disabled{ opacity: 0.3; cursor: default; }
+  .nav-btn:disabled:hover{ background: var(--paper); color: var(--ink); border-color: var(--ink); }
+
+  footer{
+    margin-top: 18px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+  }
+  footer span{ color: var(--red); }
+
+  @media (max-width: 640px){
+    .stage{ gap: 8px; }
+    .nav-btn{ width: 30px; height: 30px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 3508 3508" xmlns="http://www.w3.org/2000/svg">
+        <g transform="matrix(1.76433,0,0,1.76433,-1340.59,-1340.59)">
+          <path d="M2681.1,2681.1L1753.94,826.772L826.772,2681.1L2681.1,1753.94"/>
+        </g>
+      </svg>
+      <span>Ander Amezcua</span>
+    </div>
+    <a href="index.html">← Índice</a>
+  </header>
+
+  <div class="stage">
+    <button class="nav-btn" id="prev">‹</button>
+    <div id="book"></div>
+    <button class="nav-btn" id="next">›</button>
+  </div>
+
+  <footer>Página <span id="current">1</span> / <span id="total">13</span></footer>
+
+  <script>
+    const pages = [];
+    for (let i = 1; i <= 13; i++){
+      const n = String(i).padStart(2, '0');
+      pages.push(`pages/page-${n}.jpg`);
+    }
+
+    const pageFlip = new St.PageFlip(document.getElementById('book'), {
+      width: 500,
+      height: 500,
+      size: "stretch",
+      minWidth: 260,
+      maxWidth: 700,
+      minHeight: 260,
+      maxHeight: 700,
+      showCover: true,
+      maxShadowOpacity: 0.4,
+      mobileScrollSupport: false,
+      usePortrait: true
+    });
+
+    pageFlip.loadFromImages(pages);
+
+    const currentEl = document.getElementById('current');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+
+    function updateButtons(){
+      const idx = pageFlip.getCurrentPageIndex();
+      currentEl.textContent = idx + 1;
+      prevBtn.disabled = idx === 0;
+      nextBtn.disabled = idx === pageFlip.getPageCount() - 1;
+    }
+
+    pageFlip.on('flip', updateButtons);
+    updateButtons();
+
+    prevBtn.addEventListener('click', () => pageFlip.flipPrev());
+    nextBtn.addEventListener('click', () => pageFlip.flipNext());
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') pageFlip.flipNext();
+      if (e.key === 'ArrowLeft') pageFlip.flipPrev();
+    });
+  </script>
+
+</body>
+</html>
