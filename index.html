@@ -30,9 +30,13 @@
     padding: 28px;
   }
 
-  .sheet{
+  .wrap{
     width: 100%;
     max-width: 640px;
+  }
+
+  .sheet{
+    width: 100%;
     background: var(--paper);
     border: 1px solid var(--ink);
     position: relative;
@@ -76,6 +80,23 @@
     text-transform: uppercase;
     color: var(--red);
     margin-bottom: 16px;
+  }
+
+  .name-row{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo{
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+  }
+  .logo path{
+    fill: none;
+    stroke: var(--red);
+    stroke-width: 70.85px;
   }
 
   h1{
@@ -143,11 +164,29 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--ink-soft);
-    display: flex;
-    justify-content: space-between;
   }
 
   .foot span{ color: var(--red); }
+
+  .intranet{
+    text-align: center;
+    margin-top: 14px;
+  }
+
+  .intranet a{
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    opacity: 0.7;
+  }
+
+  .intranet a:hover{
+    color: var(--red);
+    opacity: 1;
+  }
 
   @media (max-width: 480px){
     .rail{ width: 40px; }
@@ -155,59 +194,67 @@
     .field{ padding: 32px 24px 20px; }
     h1{ font-size: 26px; }
     .link-row{ padding: 16px 24px; }
-    .foot{ padding: 14px 24px; flex-direction: column; gap: 4px; }
+    .foot{ padding: 14px 24px; }
   }
 </style>
 </head>
 <body>
 
-  <main class="sheet">
-    <div class="rail"><span>Ander · Índice</span></div>
+  <div class="wrap">
+    <main class="sheet">
+      <div class="rail"><span>Ander · Índice</span></div>
 
-    <div class="content">
-      <div class="field">
-        <div class="eyebrow">Índice personal</div>
-        <h1>Ander Amezcua</h1>
-        <p class="role">Estudiante de Arquitectura — Sevilla</p>
+      <div class="content">
+        <div class="field">
+          <div class="eyebrow">Índice personal</div>
+          <div class="name-row">
+            <svg class="logo" viewBox="0 0 3508 3508" xmlns="http://www.w3.org/2000/svg">
+              <g transform="matrix(1.76433,0,0,1.76433,-1340.59,-1340.59)">
+                <path d="M2681.1,2681.1L1753.94,826.772L826.772,2681.1L2681.1,1753.94"/>
+              </g>
+            </svg>
+            <h1>Ander Amezcua</h1>
+          </div>
+          <p class="role">Estudiante de Arquitectura</p>
+        </div>
+
+        <nav>
+          <!-- Edita aquí: texto del enlace y href -->
+          <a class="link-row" href="#" target="_blank" rel="noopener">
+            <span class="link-index">01</span>
+            <span class="link-title">Portfolio</span>
+            <span class="link-arrow">↗</span>
+          </a>
+
+          <a class="link-row" href="#" target="_blank" rel="noopener">
+            <span class="link-index">02</span>
+            <span class="link-title">CV</span>
+            <span class="link-arrow">↗</span>
+          </a>
+
+          <a class="link-row" href="mailto:tu@correo.com">
+            <span class="link-index">03</span>
+            <span class="link-title">Contacto</span>
+            <span class="link-arrow">↗</span>
+          </a>
+
+          <a class="link-row" href="#" target="_blank" rel="noopener">
+            <span class="link-index">04</span>
+            <span class="link-title">Todos los proyectos</span>
+            <span class="link-arrow">↗</span>
+          </a>
+        </nav>
+
+        <div class="foot">
+          <span>SEVILLA / VITORIA-GASTEIZ</span>
+        </div>
       </div>
+    </main>
 
-      <nav>
-        <!-- Edita aquí: texto del enlace y href -->
-        <a class="link-row" href="https://drive.google.com/" target="_blank" rel="noopener">
-          <span class="link-index">01</span>
-          <span class="link-title">Apuntes y documentos</span>
-          <span class="link-arrow">↗</span>
-        </a>
-
-        <a class="link-row" href="#" target="_blank" rel="noopener">
-          <span class="link-index">02</span>
-          <span class="link-title">Portfolio de proyectos</span>
-          <span class="link-arrow">↗</span>
-        </a>
-
-        <a class="link-row" href="#" target="_blank" rel="noopener">
-          <span class="link-index">03</span>
-          <span class="link-title">Trabajo de Fin de Grado</span>
-          <span class="link-arrow">↗</span>
-        </a>
-
-        <a class="link-row" href="mailto:tu@correo.com">
-          <span class="link-index">04</span>
-          <span class="link-title">Contacto</span>
-          <span class="link-arrow">↗</span>
-        </a>
-      </nav>
-
-      <div class="foot">
-        <div>Sevilla <span>·</span> 2026</div>
-        <div id="fecha"></div>
-      </div>
+    <div class="intranet">
+      <a href="#" target="_blank" rel="noopener">intranet</a>
     </div>
-  </main>
-
-  <script>
-    document.getElementById('fecha').textContent = new Date().toLocaleDateString('es-ES', { year:'numeric', month:'2-digit' });
-  </script>
+  </div>
 
 </body>
 </html>
