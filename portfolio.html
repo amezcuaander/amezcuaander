@@ -57,7 +57,12 @@
     text-transform: uppercase;
   }
 
-  header a{
+  .menu{
+    display: flex;
+    gap: 8px;
+  }
+
+  .menu a{
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.12em;
@@ -68,7 +73,9 @@
     padding: 7px 14px;
     transition: all 0.15s ease;
   }
-  header a:hover{ border-color: var(--red); color: var(--red); }
+  .menu a:hover{ border-color: var(--red); color: var(--red); }
+  .menu a.primary{ background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .menu a.primary:hover{ background: var(--red); border-color: var(--red); color: var(--paper); }
 
   .stage{
     flex: 1;
@@ -77,7 +84,7 @@
     align-items: center;
     justify-content: center;
     gap: 14px;
-    max-width: 1000px;
+    max-width: 1100px;
   }
 
   #book{
@@ -127,7 +134,10 @@
       </svg>
       <span>Ander Amezcua</span>
     </div>
-    <a href="index.html">← Índice</a>
+    <div class="menu">
+      <a href="javascript:history.back()">Atrás</a>
+      <a href="index.html" class="primary">Inicio</a>
+    </div>
   </header>
 
   <div class="stage">
@@ -146,13 +156,13 @@
     }
 
     const pageFlip = new St.PageFlip(document.getElementById('book'), {
-      width: 500,
-      height: 500,
+      width: 700,
+      height: 700,
       size: "stretch",
-      minWidth: 260,
-      maxWidth: 700,
-      minHeight: 260,
-      maxHeight: 700,
+      minWidth: 280,
+      maxWidth: 950,
+      minHeight: 280,
+      maxHeight: 950,
       showCover: true,
       maxShadowOpacity: 0.4,
       mobileScrollSupport: false,
