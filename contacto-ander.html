@@ -10,43 +10,41 @@
 <style>
   :root{
     --cream:#F2DBBD;
-    --paper:#F8F4EE;
+    --paper:#FBF7F1;
+    --paper-2:#F7F1E8;
     --ink:#17140F;
     --ink-soft:#6B6459;
-    --line:rgba(23,20,15,.18);
+    --line:rgba(23,20,15,.12);
+    --line-strong:rgba(23,20,15,.2);
     --red:#90040F;
+    --shadow:0 18px 50px rgba(23,20,15,.12);
+    --radius:24px;
   }
 
   *{box-sizing:border-box;margin:0;padding:0}
-
   html,body{min-height:100%}
 
   body{
     background:var(--cream);
     color:var(--ink);
-    font-family:'Montserrat', Arial, sans-serif;
+    font-family:'Montserrat',Arial,sans-serif;
     min-height:100vh;
-    padding:20px 16px 28px;
+    padding:40px 28px 64px;
   }
 
   header{
     width:100%;
     max-width:900px;
-    margin:0 auto 24px;
+    margin:0 auto 42px;
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:12px;
     flex-wrap:wrap;
-    padding:6px 4px 12px;
+    padding:6px 4px 10px;
   }
 
-  .brand{
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-
+  .brand{display:flex;align-items:center;gap:10px}
   .logo{width:22px;height:22px}
   .logo path{fill:none;stroke:var(--red);stroke-width:70.85px}
 
@@ -57,11 +55,7 @@
     text-transform:uppercase;
   }
 
-  .menu{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-  }
+  .menu{display:flex;gap:8px;flex-wrap:wrap}
 
   .menu a{
     min-height:44px;
@@ -77,32 +71,40 @@
     border:1px solid var(--ink-soft);
     padding:7px 14px;
     transition:all .15s ease;
+    background:transparent;
   }
   .menu a:hover{border-color:var(--red);color:var(--red)}
   .menu a.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
   .menu a.primary:hover{background:var(--red);border-color:var(--red);color:var(--paper)}
 
   .page{
-    width:min(100%, 980px);
+    width:min(100%, 1220px);
     margin:0 auto;
-    background:rgba(253,249,244,.35);
-    border:1px solid rgba(23,20,15,.08);
-    padding:clamp(28px, 4vw, 44px);
+  }
+
+  .card{
+    width:min(100%, 760px);
+    margin:0 auto;
+    background:linear-gradient(180deg, rgba(251,247,241,.96), rgba(247,241,232,.92));
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:clamp(38px, 6vw, 62px);
   }
 
   .eyebrow{
     font-size:12px;
-    letter-spacing:.06em;
+    letter-spacing:.08em;
     text-transform:uppercase;
     color:var(--ink-soft);
     margin-bottom:10px;
   }
 
   h1{
-    font-size:clamp(40px, 6vw, 58px);
-    line-height:.98;
+    font-size:clamp(36px, 5.2vw, 54px);
+    line-height:1;
     letter-spacing:-.04em;
-    margin-bottom:28px;
+    margin-bottom:24px;
   }
 
   .back-link{
@@ -111,13 +113,15 @@
     font-size:15px;
     font-style:italic;
     font-weight:600;
-    margin-bottom:42px;
+    margin-bottom:46px;
+    text-decoration:underline;
+    text-underline-offset:4px;
   }
 
   .contact-grid{
     display:grid;
-    grid-template-columns:minmax(220px, 280px) minmax(280px, 1fr);
-    gap:clamp(28px, 6vw, 90px);
+    grid-template-columns:minmax(220px, 250px) minmax(300px, 1fr);
+    gap:clamp(38px, 7vw, 96px);
     align-items:center;
   }
 
@@ -128,45 +132,42 @@
   }
 
   .portrait{
-    width:min(100%, 250px);
+    width:min(100%, 225px);
     aspect-ratio:1/1;
     border-radius:50%;
-    background:
-      radial-gradient(circle at 50% 35%, rgba(255,255,255,.78), rgba(255,255,255,.2) 58%, transparent 59%),
-      linear-gradient(180deg, rgba(255,255,255,.52), rgba(255,255,255,.14));
-    border:1px solid rgba(23,20,15,.08);
-    display:flex;
-    align-items:center;
-    justify-content:center;
     overflow:hidden;
+    border:1px solid rgba(23,20,15,.08);
+    background:#efe7db;
+    box-shadow:0 10px 24px rgba(23,20,15,.08);
   }
 
   .portrait img{
     width:100%;
     height:100%;
     object-fit:cover;
-    filter:grayscale(100%);
+    display:block;
   }
 
   .details h2{
-    font-size:clamp(28px, 4.4vw, 44px);
-    line-height:1.05;
+    font-size:clamp(26px, 3.5vw, 38px);
+    line-height:1.08;
     letter-spacing:-.03em;
-    margin-bottom:28px;
-    max-width:14ch;
+    margin-bottom:24px;
+    max-width:15ch;
   }
 
-  .details p,
-  .details a{
+  .detail-list{display:grid;gap:14px}
+
+  .detail-list a,
+  .detail-list p{
     display:block;
-    font-size:clamp(18px, 2vw, 21px);
+    font-size:clamp(17px, 2vw, 20px);
     line-height:1.45;
     color:var(--ink);
     text-decoration:none;
-    margin-bottom:14px;
   }
 
-  .details a.muted{
+  .detail-list a.muted{
     color:var(--ink-soft);
     text-decoration:underline;
     text-underline-offset:4px;
@@ -176,20 +177,16 @@
     display:inline-flex !important;
     align-items:center;
     gap:10px;
-    margin-top:8px;
+    margin-top:10px;
     font-weight:700;
   }
 
-  .portfolio-link svg{
-    width:18px;
-    height:18px;
-    flex:0 0 auto;
-  }
+  .portfolio-link svg{width:18px;height:18px;flex:0 0 auto}
 
   .footer-nav{
-    margin-top:64px;
-    padding-top:22px;
-    border-top:1px solid var(--line);
+    margin-top:60px;
+    padding-top:28px;
+    border-top:1px solid var(--line-strong);
     display:grid;
     grid-template-columns:repeat(3, minmax(0,1fr));
     gap:16px;
@@ -199,9 +196,10 @@
     display:flex;
     align-items:center;
     gap:10px;
+    min-height:44px;
     color:var(--ink);
     text-decoration:none;
-    font-size:17px;
+    font-size:16px;
     font-weight:600;
   }
 
@@ -211,40 +209,41 @@
   }
 
   .footer-nav svg{
-    width:22px;
-    height:22px;
-    color:var(--ink-soft);
+    width:20px;
+    height:20px;
     flex:0 0 auto;
+    color:var(--ink-soft);
+  }
+
+  .footer-nav .logo-mini{
+    width:18px;
+    height:18px;
+    color:var(--red);
+  }
+
+  .footer-nav .logo-mini path{
+    fill:none;
+    stroke:currentColor;
+    stroke-width:70.85px;
   }
 
   @media (max-width: 760px){
-    .contact-grid{
-      grid-template-columns:1fr;
-      align-items:start;
-    }
-
-    .portrait-wrap{
-      justify-content:flex-start;
-    }
-
+    body{padding:28px 18px 40px}
+    .card{width:min(100%, 680px);padding:32px 24px}
+    .contact-grid{grid-template-columns:1fr;align-items:start;gap:34px}
+    .portrait-wrap{justify-content:flex-start}
     .details h2{max-width:none}
-
-    .footer-nav{
-      grid-template-columns:1fr;
-      gap:14px;
-    }
+    .footer-nav{grid-template-columns:1fr;gap:12px}
   }
 
   @media (max-width: 520px){
-    body{padding:14px 10px 18px}
-
-    .page{padding:22px 18px}
-
+    body{padding:22px 14px 28px}
+    header{margin-bottom:28px}
     .menu{width:100%}
     .menu a{flex:1 1 140px}
-
-    .details p,
-    .details a{font-size:17px}
+    .card{padding:28px 22px;border-radius:20px}
+    .portrait{width:min(100%, 210px)}
+    .back-link{margin-bottom:36px}
   }
 </style>
 </head>
@@ -265,60 +264,66 @@
   </header>
 
   <main class="page">
-    <div class="eyebrow">Contacto</div>
-    <h1>Contacto</h1>
-    <a class="back-link" href="index.html">Página Principal</a>
+    <section class="card">
+      <div class="eyebrow">Contacto</div>
+      <h1>Contacto</h1>
+      <a class="back-link" href="index.html">Página Principal</a>
 
-    <section class="contact-grid">
-      <div class="portrait-wrap">
-        <div class="portrait" aria-hidden="true">
-          <img src="image.jpg" alt="Retrato de Ander Amezcua" loading="lazy">
+      <div class="contact-grid">
+        <div class="portrait-wrap">
+          <div class="portrait">
+            <img src="image.jpg" alt="Retrato de Ander Amezcua" loading="lazy">
+          </div>
+        </div>
+
+        <div class="details">
+          <h2>Ander Amezcua Alvarez de Arcaya</h2>
+          <div class="detail-list">
+            <a href="mailto:anderamezcua.a@gmail.com">anderamezcua.a@gmail.com</a>
+            <a href="tel:+34611409832">+34 611 40 98 32</a>
+            <a class="muted" href="https://www.instagram.com/amezcua_ander/" target="_blank" rel="noopener noreferrer">@amezcua_ander</a>
+            <a class="muted" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="portfolio-link" href="portfolio-flipbook-responsive.html">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 2v6h6"/>
+                <path d="M8 13h8"/>
+                <path d="M8 17h5"/>
+              </svg>
+              PortFolio
+            </a>
+          </div>
         </div>
       </div>
 
-      <div class="details">
-        <h2>Ander Amezcua Alvarez de Arcaya</h2>
-        <p><a href="mailto:anderamezcua.a@gmail.com">anderamezcua.a@gmail.com</a></p>
-        <p><a href="tel:+34611409832">+34 611 40 98 32</a></p>
-        <a class="muted" href="https://www.instagram.com/amezcua_ander/" target="_blank" rel="noopener noreferrer">@amezcua_ander</a>
-        <a class="muted" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a class="portfolio-link" href="portfolio-flipbook-responsive.html">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <path d="M14 2v6h6"/>
-            <path d="M8 13h8"/>
-            <path d="M8 17h5"/>
+      <nav class="footer-nav" aria-label="Enlaces inferiores">
+        <a href="index.html">
+          <svg class="logo-mini" viewBox="0 0 3508 3508" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g transform="matrix(1.76433,0,0,1.76433,-1340.59,-1340.59)">
+              <path d="M2681.1,2681.1L1753.94,826.772L826.772,2681.1L2681.1,1753.94"/>
+            </g>
           </svg>
-          PortFolio
+          <span>Ander Amezcua</span>
         </a>
-      </div>
+        <a href="proyectos.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/>
+            <path d="M12 12 21 7.5"/>
+            <path d="M12 12v9"/>
+          </svg>
+          <span>Proyectos</span>
+        </a>
+        <a href="cv.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7 3h8l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/>
+            <path d="M15 3v5h5"/>
+            <path d="M9 13h6"/>
+            <path d="M9 17h6"/>
+          </svg>
+          <span>CV</span>
+        </a>
+      </nav>
     </section>
-
-    <nav class="footer-nav" aria-label="Enlaces inferiores">
-      <a href="index.html">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M3 20 12 4l3.5 6 5.5 10-7-3-3 3-1.5-5.5z"/>
-        </svg>
-        <span>Ander Amezcua</span>
-      </a>
-      <a href="proyectos.html">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/>
-          <path d="M12 12 21 7.5"/>
-          <path d="M12 12v9"/>
-        </svg>
-        <span>Proyectos</span>
-      </a>
-      <a href="cv.html">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M7 3h8l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/>
-          <path d="M15 3v5h5"/>
-          <path d="M9 13h6"/>
-          <path d="M9 17h6"/>
-        </svg>
-        <span>CV</span>
-      </a>
-    </nav>
   </main>
 </body>
 </html>
